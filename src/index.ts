@@ -1,11 +1,5 @@
-import * as express from "express"; // 1
-const app = express();
+import Server from "./configure/server";
+import routes from "./routes";
+import { config } from "./configure/connection";
 
-app.get("/", (req: express.Request, res: express.Response) => {
-  // 2
-  res.send("Hello World!");
-});
-
-app.listen(3000, () => {
-  console.log("Example app listening on port 3000!");
-});
+export default new Server().router(routes).listen(config.port);

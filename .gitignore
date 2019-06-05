@@ -1,5 +1,8 @@
 dist/
 node_modules/
 
+*.log.*
+nohup.out
 
-*.log
+upload/images/
+upload/files/

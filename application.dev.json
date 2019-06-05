@@ -1,0 +1,25 @@
+{
+  "APP_ID": "server",
+  "LOG_LEVER": "debug",
+  "port": 3300,
+  "db_server": {
+    "hello": {
+      "host": "localhost",
+      "user": "root",
+      "password": "root",
+      "port": 3306,
+      "database": "my_database"
+    }
+  },
+  "redis_server": {
+    "port": 6379,
+    "host": "localhost"
+  },
+
+  "hmacKey": "more 150 byte",
+  "jwtKey": "more 150 byte",
+
+  "SESSION_SECRET": "mySecret",
+  "REQUEST_LIMIT": "100kb",
+  "SWAGGER_API_SPEC": "/api"
+}

@@ -1,34 +1,13 @@
-// var path = require("path");
-
-// module.exports = {
-//   entry: "./src/index.ts",
-//   target: "node",
-//   output: {
-//     filename: "index.js",
-//     path: path.resolve(__dirname, "dist")
-//   },
-//   devtool: "source-map",
-//   resolve: {
-//     // Add `.ts` and `.tsx` as a resolvable extension.
-//     extensions: [".ts", ".tsx", ".js"]
-//   },
-//   module: {
-//     rules: [
-//       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-//       { test: /\.tsx?$/, loader: "ts-loader" }
-//     ]
-//   }
-// };
-
 const path = require("path");
-const { NODE_ENV = "production" } = process.env;
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
+  mode: process.env.NODE_ENV == "production" ? "production" : "development",
+  // mode: "production",
   entry: "./src/index.ts",
-  mode: NODE_ENV,
   target: "node",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist/src"),
     filename: "index.js"
   },
   resolve: {
@@ -38,11 +17,19 @@ module.exports = {
     rules: [
       {
         test: /\.ts$/,
-        loader: "ts-loader",
-        exclude: /node_modules/
+        use: ["ts-loader"],
+        exclude: [
+          "/node_modules/",
+          this.mode == "production"
+            ? "/application.dev.json"
+            : "/application.prod.json"
+        ]
       }
     ]
   },
-  //   externals: [nodeExternals()],
+  node: {
+    __dirname: false
+  },
+  externals: [nodeExternals()],
   devtool: "source-map"
 };
