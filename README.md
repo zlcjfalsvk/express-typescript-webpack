@@ -1,4 +1,6 @@
-# express-typescript-webpack
+# express-typescript-generator
 
-setting express + typescript + webpack
+## installation
+
+setting express + typescript + generator
 by Cheolmin Choi
