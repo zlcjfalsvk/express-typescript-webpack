@@ -13,7 +13,8 @@ const app = express();
 export default class Server {
   constructor() {
     const root = path.normalize(__dirname + "/../..");
-    app.use(express.static(`${root}/public`));
+    // swagger ui
+    // app.use(express.static(`${root}/public`));
     sequelize_hello.sync();
   }
 
@@ -21,8 +22,10 @@ export default class Server {
     // if you want swagger, this use
     // installValidator(app, routes);
 
+    // else use this line 3
     app.use(bodyParser.json());
-    app.use(cors);
+    app.use(cors());
+    routes(app);
     return this;
   }
 
