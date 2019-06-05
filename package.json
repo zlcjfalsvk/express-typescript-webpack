@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "express-typescript-generator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,8 +8,12 @@
     "lint": "tslint -p .",
     "build": "npx webpack"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zlcjfalsvk/express-typescript-webpack.git"
+  },
   "keywords": [],
-  "author": "",
+  "author": "cheolcheol",
   "license": "ISC",
   "dependencies": {
     "@types/bluebird": "^3.5.26",
