@@ -53,28 +53,4 @@ export class Utiles {
     let result = hmac.update(pwd).digest("hex");
     return result;
   }
-
-  static createCardNum(mobileNum: string, oldCardNum?: string): string {
-    let ret: string = "";
-    let num = mobileNum.substr(1);
-    if (oldCardNum === undefined) {
-      ret = "00" + (num.length == 10 ? num : num + "0") + "82" + "01";
-    } else {
-      let card = oldCardNum.substring(0, 14);
-      let num = +oldCardNum.substr(-2) + 1;
-      ret = card + (num > 9 ? num + "" : "0" + num);
-    }
-    return ret;
-  }
-
-  static createSmsCode(length: number): string {
-    let code: string = "";
-    let i: number;
-
-    for (i = 0; i < length; i++) {
-      code += Math.floor(Math.random() * 9 + 1).toString();
-    }
-
-    return code;
-  }
 }
