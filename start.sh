@@ -13,7 +13,7 @@
 # dirPath=$(dirname $(realpath $0))
 
 # npm run build
-# cp $dirPath./src/configure/api.yml $dirPath/dist/src/
+# cp $dirPath/src/configure/api.yml $dirPath/dist/src/
 
 # pm2 delete your app;
 # pm2 start ./dist/src/index.js -i 1 --name your app;
