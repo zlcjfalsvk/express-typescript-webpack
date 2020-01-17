@@ -1,0 +1,26 @@
+definitions:        # Schema defination for request body
+  loginReq:
+    type: object
+    properties:
+      token:
+        type: string
+        example: "Token"
+        description: cash token
+      phoneNumber:
+        type: number
+        example: 1077777777
+        description: 핸드폰 번호 
+  loginRes:
+    type: object
+    properties:
+      resultCode: 
+        type: number
+      resultData:
+        type: object
+        properties: 
+          token:
+            type: string
+          expired_time:
+            type: number
+      message:
+        type: string

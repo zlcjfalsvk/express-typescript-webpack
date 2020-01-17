@@ -1,0 +1,53 @@
+paths:
+  /auth/login:            # path of the user from your endpoint
+    post:                 # endpoint request type (post request)
+      tags:               # Tag property
+        - Auth            # Value of the tag
+      summary: Access 토큰 발급
+      produces:
+      - application/json
+      parameters:         # request parameters
+      - in: body          # request body
+        name: login     # name of request, can be any name
+        required: true   # can also be true depending on user preference
+        schema:           # Schema definition
+          $ref: '#/definitions/loginReq'
+      responses:          # server responses
+        200:
+          description: 정상응답
+          schema:
+            $ref: '#/definitions/loginRes'
+          examples:
+            application/json:
+              {
+                "resultCode": 200,
+                "resultData": {
+                    "token": "Access Token",
+                    "expired_time": 1576897697000
+                },
+                "message": ""
+              }
+        403:
+          description: 에러(token 에러)
+          schema:
+            $ref: '#/definitions/responseError'
+          examples: 
+            application/json:
+              {
+                "resultCode": 403,
+                "resultData": {},
+                "message": "Cash Token is not valid"
+              }
+        500: 
+          description: 서버, DB 에러
+          schema:
+            $ref: '#/definitions/responseError'
+          examples:
+            application/json:
+              {
+                "resultCode": 500,
+                "resultData": {},
+                "message": "Error Message"
+              }
+              
+          
