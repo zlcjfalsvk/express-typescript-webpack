@@ -1,15 +1,15 @@
-import { Request, Response, NextFunction } from "express";
+import { NextFunction, Request, Response } from "express";
 import fs from "fs";
 import moment = require("moment");
 
 export default function fileHandler(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
-  let date: string = moment().format("YYMMDD");
-  let fileDir: string = "upload/files/" + date;
-  let imageDir: string = "upload/images/" + date;
+  const date: string = moment().format("YYMMDD");
+  const fileDir: string = "upload/files/" + date;
+  const imageDir: string = "upload/images/" + date;
   try {
     const stat = fs.lstatSync(fileDir);
   } catch (err) {

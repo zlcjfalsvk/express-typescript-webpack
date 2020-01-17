@@ -1,39 +1,32 @@
 import express, { Application } from "express";
+import helmet from "helmet";
 import http from "http";
-import path from "path";
 import os from "os";
 
+import bodyParser = require("body-parser");
+import cors = require("cors");
 import { config, sequelize_hello } from "./connection";
 import l from "./logger";
-import installValidator from "./swagger";
-import cors = require("cors");
-import bodyParser = require("body-parser");
 const app = express();
 
 export default class Server {
   constructor() {
-    const root = path.normalize(__dirname + "/../..");
-    // swagger ui
-    // app.use(express.static(`${root}/public`));
     sequelize_hello.sync();
   }
 
   router(routes: (app: Application) => void): Server {
-    // if you want swagger, this use
-    // installValidator(app, routes);
-
-    // else use this line 3
     app.use(bodyParser.json());
-    app.use(cors());
+    app.use(cors())
+   .use(helmet());
     routes(app);
     return this;
   }
 
   listen(p: string | number = config.port): Application {
-    const welcome = port => () =>
+    const welcome = (port) => () =>
       l.info(
         `up and running in ${process.env.NODE_ENV ||
-          "development"} @: ${os.hostname()} on port: ${port}}`
+          "development"} @: ${os.hostname()} on port: ${port}}`,
       );
     http.createServer(app).listen(p, welcome(p));
     return app;

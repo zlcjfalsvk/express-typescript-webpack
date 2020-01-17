@@ -11,20 +11,20 @@ HelloVO.init(
       type: Sequelize.INTEGER,
       allowNull: false,
       autoIncrement: true,
-      primaryKey: true
+      primaryKey: true,
     },
     your_name: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
     },
     your_home: {
       type: Sequelize.STRING,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     sequelize: sequelize_hello,
     modelName: "HelloVO",
-    tableName: "Hello_Table"
-  }
+    tableName: "Hello_Table",
+  },
 );

@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {         
+        "name": "typescript-tslint-plugin",
+        "alwaysShowRuleFailuresAsWarnings": false,
+        "ignoreDefinitionFiles": true,
+        "configFile": "./tslint.json",
+        "suppressWhileTypeErrorsPresent": false
+      }
+    ],
     "module": "commonjs",
     "target": "es6",
     "moduleResolution": "node",
@@ -11,8 +20,8 @@
     "resolveJsonModule": true,
     "forceConsistentCasingInFileNames": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
   },
-  "include": ["src/**/*", "public/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "test"]
 }

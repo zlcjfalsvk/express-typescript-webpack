@@ -2,12 +2,11 @@ import crypto from "crypto";
 import { config, redisTemplate } from "../configure/connection";
 
 export class Utiles {
-  constructor() {}
 
   static responseToJson(
     resultCode: number,
     resultData: Object,
-    token?: boolean
+    token?: boolean,
   ): any {
     if (resultCode === 200) {
       if (typeof resultData === "string" || typeof resultData === "boolean") {
@@ -15,31 +14,31 @@ export class Utiles {
           return {
             resultCode: resultCode,
             resultData: {
-              "X-Auth-Token": resultData
+              "X-Auth-Token": resultData,
             },
-            message: ""
+            message: "",
           };
         } else {
           return {
             resultCode: resultCode,
             resultData: {
-              result: resultData
+              result: resultData,
             },
-            message: ""
+            message: "",
           };
         }
       } else {
         return {
           resultCode: resultCode,
           resultData: resultData,
-          message: ""
+          message: "",
         };
       }
     } else {
       return {
         resultCode: resultCode,
         resultData: {},
-        message: resultData
+        message: resultData,
       };
     }
   }
@@ -49,8 +48,9 @@ export class Utiles {
   }
 
   static pwdEncoding(pwd: string): string {
-    let hmac = crypto.createHmac("sha256", config.hmacKey);
-    let result = hmac.update(pwd).digest("hex");
+    const hmac = crypto.createHmac("sha256", config.hmacKey);
+    const result = hmac.update(pwd).digest("hex");
     return result;
   }
+  constructor() {}
 }
