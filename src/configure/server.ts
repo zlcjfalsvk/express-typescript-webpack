@@ -4,7 +4,7 @@ import http from "http";
 import os from "os";
 
 import bodyParser = require("body-parser");
-import cors = require("cors");
+import errorHandler from "../middlewares/error.handler";
 import { config, sequelize_hello } from "./connection";
 import l from "./logger";
 const app = express();
@@ -15,10 +15,9 @@ export default class Server {
   }
 
   router(routes: (app: Application) => void): Server {
-    app.use(bodyParser.json());
-    app.use(cors())
-   .use(helmet());
+    app.use(bodyParser.json()).use(helmet());
     routes(app);
+    app.use(errorHandler);
     return this;
   }
 

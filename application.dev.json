@@ -17,9 +17,5 @@
   },
 
   "hmacKey": "more 150 byte",
-  "jwtKey": "more 150 byte",
-
-  "SESSION_SECRET": "mySecret",
-  "REQUEST_LIMIT": "100kb",
-  "SWAGGER_API_SPEC": "/api"
+  "jwtKey": "more 150 byte"
 }

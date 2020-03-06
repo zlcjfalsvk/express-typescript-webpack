@@ -1,7 +1,6 @@
 import moment from "moment";
-import winston, { createLogger, transports } from "winston";
+import winston from "winston";
 import DailyRotateFile = require("winston-daily-rotate-file");
-import { config } from "./connection";
 
 const l = winston.createLogger({
   level: "debug", // 최소 레벨
