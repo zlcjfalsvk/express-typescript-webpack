@@ -1,14 +1,14 @@
 import express = require("express");
-import HelloService from "../../services/Hello.service";
+import HelloService from "./Hello.service";
 export class HelloController {
   get_hello(req: express.Request, res: express.Response): any {
     HelloService.get_Hello()
-      .then(r => {
+      .then((r) => {
         if (r) {
           res.status(200).json(r);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         res.status(200).json(err);
       });
   }

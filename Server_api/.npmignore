@@ -1,8 +1,0 @@
-dist/
-node_modules/
-
-*.log.*
-nohup.out
-
-upload/images/
-upload/files/

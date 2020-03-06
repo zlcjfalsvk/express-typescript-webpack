@@ -5,13 +5,14 @@ import os from "os";
 
 import bodyParser = require("body-parser");
 import errorHandler from "../middlewares/error.handler";
-import { config, sequelize_hello } from "./connection";
+import { config } from "./connection";
 import l from "./logger";
 const app = express();
 
 export default class Server {
   constructor() {
-    sequelize_hello.sync();
+    // if you use DB, you have to setting this.
+    // sequelize_hello.sync();
   }
 
   router(routes: (app: Application) => void): Server {

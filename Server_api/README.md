@@ -3,4 +3,4 @@
 ## installation
 
 setting express + typescript + generator
-by Cheolmin Choi
+by cheolcheol
